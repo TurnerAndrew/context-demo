@@ -1,24 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import Name from './components/Name'
+import Age from './components/Age'
+import Location from './components/Location'
+import Details from './components/Details'
+import { Context } from './Context'
+import { useState } from 'react'
 
 function App() {
+  const [context, setContext] = useState({})
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Context.Provider value={{context, setContext}}>
+    <div id='main'>
+      <div id='input-container' className='main-container'>
+        <Name />
+        <Age/>
+        <Location/>
+      </div>
+      <div id='details-container' className='main-container'>
+        <Details/>
+      </div>
     </div>
+    </Context.Provider>
   );
 }
 
